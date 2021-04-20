@@ -1,0 +1,263 @@
+<tool id="phyutility" name="Phyutility">
+  <description> </description>
+  <requirements>
+    <!--
+    look at fastq c wrapper
+    is writtin in java
+    -->
+  </requirements>
+
+<command>
+  <![CDATA[
+  bash '$__tool_directory__/phyutility/phyutility.jar'
+  java
+  -jar
+  phyutility.jar
+
+  #if $action == -rr
+  $action
+  -in $tree_files
+  -out $phy_output_tree
+  -names $tip_names
+  #end if
+
+  #if $action == -pr
+  $action
+  -in $tree_files
+  -out $phy_output_tree
+  -names $tip_names
+  #end if
+
+  #if $action == -vert
+  $action
+  -in $tree_files
+  -out $phy_output_nexus
+  #end if
+
+  #if $action == -con
+  $action
+  -con $consensus
+  -in $tree_files
+  -out $phy_output_consensus
+  #end if
+
+  #if $action == -ls
+  $action
+  -in $tree_files
+  #end if
+
+  #if $action == -lm
+  $action
+  -in $tree_files
+  -tree $consensus_file
+  -out $phy_output_tree
+  -names $tip_names
+  #end if
+
+  #if $action == -ts
+  $action
+  -in $tree_files
+  -tree $supp_tree
+  -out $phy_output_tree
+  -names $tip_names
+  #end if
+
+  #if $action == -tt
+  $action
+  -in $tree_files
+  -out $phy_output_tree
+  #end if
+
+  #if $action == -concat
+  $action
+  #if format == fasta
+  -in $fasta_files
+  #end if
+  #if format == nexus
+  -in $nexus_files
+  #end if
+  #if format == aln
+  -in $align_files
+  #end if
+  -out $phy_output_alignment
+  #end if
+
+  #if $action == -parse
+  $action
+  -in $fasta_files
+  -out $phy_output_fasta
+  #end if
+
+  #if $action == -clean
+  $action
+  $threshold
+  -in $nexus_files
+  -out $phy_output_nexus
+  #end if
+
+  #if $action == -es
+  $action
+  -term $terms
+  -db $database
+  #end if
+
+  #if $action == -ef
+  $action
+  -term $search_terms
+  -ll $length
+  -outfor $outfor
+  -sep $seperator
+  -db $database
+  #end if
+
+  #in logfile
+  -log $phy_logfile
+  #end if
+  ]]>
+</command>
+
+<macros>
+  <macro name="tip_names">
+    <param name="tip_names" type="string" label="Tip names"/>
+  </macro>
+  <macro name="fasta_files">
+    <param name="fasta_files" type="data" format="fasta" label="Input fasta files"/>
+  </macro>
+  <macro name="tree_files">
+    <param name="fasta_files" type="data" format="tre" label="Input tree files"/>
+  </macro>
+  <macro name="nexus_files">
+    <param name="nexus_files" type="data" format="nexus" label="Input nexus files"/>
+  </macro>
+  <macro name="search_terms">
+    <param name="search_terms" type="string" label="Search terms"/>
+  </macro>
+</macros>
+
+<inputs>
+  <conditional name="conditional_action">
+    <param name="conditional_action" type="boolean" label="Analysis type" checked="Data matrices" truevalue="Trees" falsevalue="Trees"/>
+    <when value = "Trees">
+
+      <conditional name="action">
+        <param name="select_taction" type="select" label="Analysis options">
+          <option value="-rr">Rerooting</option>
+          <option value="-pr">Pruning</option>
+          <option value="-vert">Type Conversion</option>
+          <option value="-con">Consensus</option>
+          <option value="-ls">Leaf Stability</option>
+          <option value="-lm">Branch Attachment Frequency</option>
+          <option value="-ts">Tree Support</option>
+          <option value="-tt">Thinning Trees</option>
+        </param>
+        <when value="-rr">
+          <expand macro="tip_names"/>
+          <expand macro="tree_files"/>
+        </when>
+        <when value="-pr">
+          <expand macro="tip_names"/>
+          <expand macro="tree_files"/>
+        </when>
+        <when value="-vert">
+          <expand macro="tree_files"/>
+        </when>
+        <when value="-con">
+          <param name="consensus" type="select" label="The threshold for consensus (1.0 = strict, 0.5 = majrule, 0 = allcompat)">
+            <option value="0">0</option>
+            <option value="0,5">0,5</option>
+            <option value="1">1</option>
+          </param>
+          <expand macro="tree_files"/>
+        </when>
+        <when value="-ls">
+          <expand macro="tree_files"/>
+        </when>
+        <when value="-lm">
+          <expand macro="tip_names"/>
+          <param name="consensus_file" type="data" format="con" label="Consensus file to map movement"/>
+          <expand macro="tree_files"/>
+        </when>
+        <when value="-ts">
+          <param name="supp_tree" type="data" format="con" label="Tree to get support for"/>
+          <expand macro="tree_files"/>
+        </when>
+        <when value="-tt">
+          <expand macro="tree_files"/>/>
+        </when>
+      </condtional>
+
+    </when>
+
+    <when value="Data matrices">
+      <conditional name="action">
+        <param name="select_maction" type="select" label="Analysis options">
+          <option value="-concat">Concatenate</option>
+          <option value="-parse">Genbank Parsing</option>
+          <option value="-clean">Trimming Sites</option>
+          <option value="-es">Searching NCBI</option>
+          <option value="-ef">Fetching Sequences from NCBI</option>
+        </param>
+        <when value="-concat">
+          <conditional name="format">
+            <param name="format" type="select" label="Input format">
+              <option value="fasta">fasta file</option>
+              <option value="nexus">nexus file</option>
+              <option value="aln">alignment file</option>
+            </param>
+            <when value="fasta">
+              <expand macro="fasta_files"/>
+            </when>
+            <when value="nexus">
+              <expand macro="nexus_files"/>
+            </when>
+            <when value="aln">
+              <param name="align_files" type="data" format="aln" label="Input alignment files"/>
+            </when>
+          </conditional>
+        </when>
+        <when value="-parse">
+          <expand macro="fasta_files"/>
+        </when>
+        <when value="-clean">
+          <expand macro="fasta_files"/>
+          <param name='threshold' type='float' value='0.5' min='0' max='1' />
+        </when>
+        <when value="-es">
+          <expand macro="search_terms"/>
+          <conditional name="database">
+            <param name="database" type="select" label="database type">
+              <option value="1">Nucleotide</option>
+              <option value="2">Protein</option>
+              <option value="3">Genome</option>
+              <option value="4">Taxonomy</option>
+          </conditional>
+        </when>
+        <when value="-ef">
+          <expand macro="search_terms"/>
+          <param name="length" type="integer" label="Length limit to return" help="Meant to eliminate genomic sequences or sequences that are too long in the retrieval" value="1000" min="0"/>
+          <param name="outfor" type="integer" label="customize fasta line" help="1 = ginumber, 2 = taxid, 3 = orgname, 4 = defline, 5 = seqlength" value="31" min="0"/>
+          <param name="seperator" type="string" label="seperator" value="_"/>
+          <conditional name="database">
+            <param name="database" type="select" label="database type">
+              <option value="1">Nucleotide</option>
+              <option value="2">Protein</option>
+          </conditional>
+        </when>
+      </conditional>
+
+    </when>
+  </conditional>
+  <conditional name="logfile">
+    <param name="logfile" type="boolean" label="Log file" checked="yes" truevalue="yes" falsevalue="no"/>
+    </param>
+  </conditional>
+</inputs>
+<outputs>
+  <data format="tre" name="phy_output_tree" label="output file">
+  <data format="aln" name="phy_output_alignment" label="output file">
+  <data format="fasta" name="phy_output_fasta" label="output file">
+  <data format="con" name="phy_output_consensus" label="output file">
+  <data format="nex" name="phy_output_nexus" label="output file">
+  <data format="txt" name="phy_logfile" label="log file">
+</outputs>
+</tool>
