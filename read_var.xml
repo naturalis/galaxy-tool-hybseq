@@ -1,0 +1,15 @@
+<tool id="read_var" name="Read_var">
+  <description> create consensus </description>
+	<command><![CDATA[
+    bash 'python' '${__tool_directory__}/read_var.py' '$input_var'
+ 	]]></command>
+	<inputs>
+		<param name="input_var" type="data" format="var" label="input variables"/>
+	</inputs>
+	<outputs>
+  		<data name="output_files" label="output consensus fasta file" />
+	</outputs>
+	<help>
+		This tool creates contig consensus
+  </help>
+</tool>

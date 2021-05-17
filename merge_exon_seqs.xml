@@ -1,0 +1,15 @@
+<tool id="mes" name="Merge_exon_seqs">
+  <description> merges the exon consensus file </description>
+	<command><![CDATA[
+    bash 'python' '{__tool_directory__}/merge_exon_seqs.py' 'input_fasta'
+ 	]]></command>
+	<inputs>
+		<param name="input_fasta" type="data" format="fasta" label="input fasta file"/>
+	</inputs>
+	<outputs>
+  		<data name="output" label="output merged sequences" />
+	</outputs>
+	<help>
+		This tool merges exon consensus
+  </help>
+</tool>

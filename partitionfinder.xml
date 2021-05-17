@@ -1,0 +1,15 @@
+<tool id="partitionfinder" name="Partitionfinder">
+  <description> model selection </description>
+	<command><![CDATA[
+    bash 'python' '{__tool_directory__}/partitionfinder.py' 'input'
+ 	]]></command>
+	<inputs>
+		<param name="input" type="data" format="txt" label="datablocks"/>
+	</inputs>
+	<outputs>
+  		<data name="output" label="output model" />
+	</outputs>
+	<help>
+		This tool selects best model
+  </help>
+</tool>

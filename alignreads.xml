@@ -1,0 +1,23 @@
+<tool id="alignreads" name="Alignreads" version="2.5.2">
+  <description> align reads</description>
+	<command><![CDATA[
+  	bash 'alignreads'
+    '$input_read' '$reference'
+    '--single-step'
+    '--read-type solexa'
+    '--read-orientation linear'
+    '--percent-identity medium'
+    '--depth-position-masking 5- '
+    '--proportion-base-filter 0.7- '
+ 	]]></command>
+	<inputs>
+		<param name="input_reads" type="data" format="fq" label="input reads"/>
+		<param name="reference" type="data" format="fasta" label="reference"/>
+	</inputs>
+	<outputs>
+  		<data name="output_dir" label="output directory" />
+	</outputs>
+	<help>
+		This tool aligns reads
+  </help>
+</tool>

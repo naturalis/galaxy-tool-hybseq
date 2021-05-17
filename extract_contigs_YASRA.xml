@@ -1,0 +1,15 @@
+<tool id="ecYasra" name="Extract_contigs_YASRA">
+  <description> extract contigs</description>
+	<command><![CDATA[
+    bash 'python' '${__tool_directory__}/extract_contigs_YASRA.py' 'param'
+ 	]]></command>
+	<inputs>
+		<param name="param" type="data" format="txt" label="input reads and contigs"/>
+	</inputs>
+	<outputs>
+  		<data name="output" label="output" />
+	</outputs>
+	<help>
+		This tool extracts contigs using YASRA
+  </help>
+</tool>
