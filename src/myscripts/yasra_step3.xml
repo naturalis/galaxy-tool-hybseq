@@ -1,0 +1,19 @@
+<tool id="ys3" name="YASRA step 3" version="1">
+  <description> YASRA step 3</description>
+  <requirements>
+    <requirement type="package">py2</requirement>
+  </requirements>
+	<command><![CDATA[
+	#set split = '$input.name'
+	sort '$input' -k 1,1 -k 2,2n -k 3,3n > '$Ys3_out'
+ 	]]></command>
+	<inputs>
+		<param name="input" type="data" label="input reads"/>
+	</inputs>
+	<outputs>
+  		<data name="Ys3_out" label="Ys3_${input.name[4:]}" />
+	</outputs>
+	<help>
+		sort best hits
+  </help>
+</tool>

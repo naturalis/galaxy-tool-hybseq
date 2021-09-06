@@ -1,0 +1,19 @@
+<tool id="ys1" name="YASRA step 1" version="1">
+  <description> YASRA step 1</description>
+  <requirements>
+    <requirement type="package">py2</requirement>
+  </requirements>
+	<command><![CDATA[
+	lastz '$reference'[multi] '$input_reads'[nameparse=full] --yasra85short --coverage=70 --ambiguous=iupac --format=general:name1,zstart1,end1,text1,name2,strand2,zstart2,end2,text2,nucs2 > '$Ys1_out'
+ 	]]></command>
+	<inputs>
+		<param name="input_reads" type="data" format="fasta" label="input reads"/>
+		<param name="reference" type="data" format="fasta" label="reference"/>
+	</inputs>
+	<outputs>
+  		<data name="Ys1_out" label="Ys1_Species" />
+	</outputs>
+	<help>
+		lastz step for YASRA
+  </help>
+</tool>

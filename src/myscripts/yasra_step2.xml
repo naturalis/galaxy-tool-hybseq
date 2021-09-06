@@ -1,0 +1,18 @@
+<tool id="ys2" name="YASRA step 2" version="1">
+  <description> YASRA step 2</description>
+  <requirements>
+    <requirement type="package" version="2.7" >python</requirement>
+  </requirements>
+	<command><![CDATA[
+	best_hit -u < '$input' > '$Ys2_out'
+ 	]]></command>
+	<inputs>
+		<param name="input" type="data" label="input reads"/>
+	</inputs>
+	<outputs>
+  		<data name="Ys2_out" label="Ys2_${input.name[4:]}" />
+	</outputs>
+	<help>
+		get best hits
+  </help>
+</tool>

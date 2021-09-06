@@ -1,0 +1,20 @@
+<tool id="ys4" name="YASRA step 4" version="1">
+  <description> YASRA step 4</description>
+  <requirements>
+  </requirements>
+	<command><![CDATA[
+	assembler -r -o -c -h '$input' -s '$Ys4_sam' -a '$Ys4_ace' > '$Ys4_out' 2> '$Ys4_log'
+ 	]]></command>
+	<inputs>
+		<param name="input" type="data" label="input reads"/>
+	</inputs>
+	<outputs>
+  		<data name="Ys4_out" label="Ys4_${input.name[4:]}_assembly" />
+  		<data name="Ys4_sam" format="sam" label="Ys4_${input.name[4:]}_sam" />
+  		<data name="Ys4_ace" label="Ys4_${input.name[4:]}_contigs" />
+  		<data name="Ys4_log" label="Ys4_${input.name[4:]}_log" />
+	</outputs>
+	<help>
+		assembling hits
+  </help>
+</tool>
