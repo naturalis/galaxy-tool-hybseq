@@ -1,0 +1,779 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "format-version": "0.1",
+    "name": "Hybseq pipeline part 1",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "ref-at.fasta"
+                }
+            ],
+            "label": "ref-at.fasta",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "bottom": 465.68333435058594,
+                "height": 61.80000305175781,
+                "left": 327.4666748046875,
+                "right": 527.4666748046875,
+                "top": 403.8833312988281,
+                "width": 200,
+                "x": 327.4666748046875,
+                "y": 403.8833312988281
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "dbc5f6b5-3983-4a70-886d-66708e884bdf",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "1391a61a-23d8-4032-a3a8-04a33b4b870d"
+                }
+            ]
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "S0275_1.fastq"
+                }
+            ],
+            "label": "S0275_1.fastq",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "bottom": 254.78334045410156,
+                "height": 61.80000305175781,
+                "left": -532.9666748046875,
+                "right": -332.9666748046875,
+                "top": 192.98333740234375,
+                "width": 200,
+                "x": -532.9666748046875,
+                "y": 192.98333740234375
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "3eee9332-e03f-4825-8609-5abcdb352608",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "087bb646-f87c-460a-bcea-80104f37705f"
+                }
+            ]
+        },
+        "2": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 2,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "S0275_2.fastq"
+                }
+            ],
+            "label": "S0275_2.fastq",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "bottom": 333.81666564941406,
+                "height": 61.80000305175781,
+                "left": -530.0333251953125,
+                "right": -330.0333251953125,
+                "top": 272.01666259765625,
+                "width": 200,
+                "x": -530.0333251953125,
+                "y": 272.01666259765625
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "3cd56baf-610a-4682-bde1-fc4dcd3ac64a",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "6fcea0bb-69b7-4b7a-a68e-f7e6a736c377"
+                }
+            ]
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.38.1",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "readtype|fastq_r1_in": {
+                    "id": 1,
+                    "output_name": "output"
+                },
+                "readtype|fastq_r2_in": {
+                    "id": 2,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Trimmomatic",
+            "outputs": [
+                {
+                    "name": "fastq_out_r1_paired",
+                    "type": "input"
+                },
+                {
+                    "name": "fastq_out_r2_paired",
+                    "type": "input"
+                },
+                {
+                    "name": "fastq_out_r1_unpaired",
+                    "type": "input"
+                },
+                {
+                    "name": "fastq_out_r2_unpaired",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "bottom": 531.2833404541016,
+                "height": 337.20001220703125,
+                "left": -251.76666259765625,
+                "right": -51.76666259765625,
+                "top": 194.0833282470703,
+                "width": 200,
+                "x": -251.76666259765625,
+                "y": 194.0833282470703
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.38.1",
+            "tool_shed_repository": {
+                "changeset_revision": "d94aff5ee623",
+                "name": "trimmomatic",
+                "owner": "pjbriggs",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"illuminaclip\": {\"do_illuminaclip\": \"true\", \"__current_case__\": 0, \"adapter_type\": {\"standard_or_custom\": \"standard\", \"__current_case__\": 0, \"adapter_fasta\": \"TruSeq3-PE.fa\"}, \"seed_mismatches\": \"2\", \"palindrome_clip_threshold\": \"30\", \"simple_clip_threshold\": \"10\", \"min_adapter_len\": \"36\", \"keep_both_reads\": \"true\"}, \"operations\": [{\"__index__\": 0, \"operation\": {\"name\": \"SLIDINGWINDOW\", \"__current_case__\": 0, \"window_size\": \"5\", \"required_quality\": \"20\"}}], \"output_err\": \"false\", \"output_logs\": \"false\", \"readtype\": {\"single_or_paired\": \"pair_of_files\", \"__current_case__\": 1, \"fastq_r1_in\": {\"__class__\": \"ConnectedValue\"}, \"fastq_r2_in\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.38.1",
+            "type": "tool",
+            "uuid": "fb5fa544-6708-4a94-8a0b-89e3f7550a43",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "fastq_out_r1_paired",
+                    "uuid": "0a0b7769-24ce-4fcc-9df9-4eb91ce12262"
+                },
+                {
+                    "label": null,
+                    "output_name": "fastq_out_r2_paired",
+                    "uuid": "a9b6a38d-a50c-45bd-a4b8-0e04947ff9e3"
+                },
+                {
+                    "label": null,
+                    "output_name": "fastq_out_r1_unpaired",
+                    "uuid": "937d7104-a447-4797-ab79-09978075934d"
+                },
+                {
+                    "label": null,
+                    "output_name": "fastq_out_r2_unpaired",
+                    "uuid": "4068c005-3eff-48dc-8b5b-7179c658d508"
+                }
+            ]
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastx_collapser/cshl_fastx_collapser/1.0.1",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "input": {
+                    "id": 3,
+                    "output_name": "fastq_out_r1_paired"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Collapse",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "bottom": 253.5500030517578,
+                "height": 113.60000610351562,
+                "left": 34.33332824707031,
+                "right": 234.3333282470703,
+                "top": 139.9499969482422,
+                "width": 200,
+                "x": 34.33332824707031,
+                "y": 139.9499969482422
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastx_collapser/cshl_fastx_collapser/1.0.1",
+            "tool_shed_repository": {
+                "changeset_revision": "7ce1891db6f5",
+                "name": "fastx_collapser",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.1",
+            "type": "tool",
+            "uuid": "0370647c-7cff-4f7b-b18a-978bb64e4f53",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "881f234b-8900-44ec-83a4-90feda892418"
+                }
+            ]
+        },
+        "5": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastx_collapser/cshl_fastx_collapser/1.0.1",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "input": {
+                    "id": 3,
+                    "output_name": "fastq_out_r2_paired"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Collapse",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "bottom": 378.5500183105469,
+                "height": 113.60000610351562,
+                "left": 35.366668701171875,
+                "right": 235.36666870117188,
+                "top": 264.95001220703125,
+                "width": 200,
+                "x": 35.366668701171875,
+                "y": 264.95001220703125
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastx_collapser/cshl_fastx_collapser/1.0.1",
+            "tool_shed_repository": {
+                "changeset_revision": "7ce1891db6f5",
+                "name": "fastx_collapser",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.1",
+            "type": "tool",
+            "uuid": "4ceb2b58-8ffd-40fe-a4d9-e930bbefaaf2",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "e3243b34-0459-4d75-a6e0-b5b48976b415"
+                }
+            ]
+        },
+        "6": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastx_collapser/cshl_fastx_collapser/1.0.1",
+            "errors": null,
+            "id": 6,
+            "input_connections": {
+                "input": {
+                    "id": 3,
+                    "output_name": "fastq_out_r1_unpaired"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Collapse",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "bottom": 506.5833282470703,
+                "height": 113.59999084472656,
+                "left": 37.33332824707031,
+                "right": 237.3333282470703,
+                "top": 392.98333740234375,
+                "width": 200,
+                "x": 37.33332824707031,
+                "y": 392.98333740234375
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastx_collapser/cshl_fastx_collapser/1.0.1",
+            "tool_shed_repository": {
+                "changeset_revision": "7ce1891db6f5",
+                "name": "fastx_collapser",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.1",
+            "type": "tool",
+            "uuid": "0963e096-0582-4fe1-886d-d61f8ad97511",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "29714f9b-17da-4e9e-8178-c0092faab7f2"
+                }
+            ]
+        },
+        "7": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastx_collapser/cshl_fastx_collapser/1.0.1",
+            "errors": null,
+            "id": 7,
+            "input_connections": {
+                "input": {
+                    "id": 3,
+                    "output_name": "fastq_out_r2_unpaired"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Collapse",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "fasta"
+                }
+            ],
+            "position": {
+                "bottom": 638.3833160400391,
+                "height": 113.59999084472656,
+                "left": 39.33332824707031,
+                "right": 239.3333282470703,
+                "top": 524.7833251953125,
+                "width": 200,
+                "x": 39.33332824707031,
+                "y": 524.7833251953125
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastx_collapser/cshl_fastx_collapser/1.0.1",
+            "tool_shed_repository": {
+                "changeset_revision": "7ce1891db6f5",
+                "name": "fastx_collapser",
+                "owner": "devteam",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fastqsanger\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.1",
+            "type": "tool",
+            "uuid": "bb53b839-ad49-462f-815c-e9a2b0bc8ca5",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "930dd54c-7a5e-4516-8e2d-8603b13c6249"
+                }
+            ]
+        },
+        "8": {
+            "annotation": "",
+            "content_id": "cat1",
+            "errors": null,
+            "id": 8,
+            "input_connections": {
+                "input1": {
+                    "id": 4,
+                    "output_name": "output"
+                },
+                "queries_0|input2": {
+                    "id": 5,
+                    "output_name": "output"
+                },
+                "queries_1|input2": {
+                    "id": 6,
+                    "output_name": "output"
+                },
+                "queries_2|input2": {
+                    "id": 7,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Concatenate datasets",
+            "outputs": [
+                {
+                    "name": "out_file1",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "bottom": 345.71665954589844,
+                "height": 204.79998779296875,
+                "left": 324.5,
+                "right": 524.5,
+                "top": 140.9166717529297,
+                "width": 200,
+                "x": 324.5,
+                "y": 140.9166717529297
+            },
+            "post_job_actions": {},
+            "tool_id": "cat1",
+            "tool_state": "{\"__input_ext\": \"fasta\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"queries\": [{\"__index__\": 0, \"input2\": {\"__class__\": \"ConnectedValue\"}}, {\"__index__\": 1, \"input2\": {\"__class__\": \"ConnectedValue\"}}, {\"__index__\": 2, \"input2\": {\"__class__\": \"ConnectedValue\"}}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "b6713370-cd0d-4bbf-ad97-3d46a4d7bb0a",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "out_file1",
+                    "uuid": "404f85d3-ecb7-4c0b-87cf-d2799b0595f5"
+                }
+            ]
+        },
+        "9": {
+            "annotation": "",
+            "content_id": "ys1",
+            "errors": null,
+            "id": 9,
+            "input_connections": {
+                "input_reads": {
+                    "id": 8,
+                    "output_name": "out_file1"
+                },
+                "reference": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "YASRA step 1",
+            "outputs": [
+                {
+                    "name": "Ys1_out",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "bottom": 262.68333435058594,
+                "height": 123.60000610351562,
+                "left": 602.6666870117188,
+                "right": 802.6666870117188,
+                "top": 139.0833282470703,
+                "width": 200,
+                "x": 602.6666870117188,
+                "y": 139.0833282470703
+            },
+            "post_job_actions": {},
+            "tool_id": "ys1",
+            "tool_state": "{\"__input_ext\": \"fasta\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input_reads\": {\"__class__\": \"ConnectedValue\"}, \"reference\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1",
+            "type": "tool",
+            "uuid": "a4e8003a-1ef8-4574-99e0-aa0e71b34a76",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "Ys1_out",
+                    "uuid": "8b309422-d9cf-44b1-93bd-018803b22981"
+                }
+            ]
+        },
+        "10": {
+            "annotation": "",
+            "content_id": "ys2",
+            "errors": null,
+            "id": 10,
+            "input_connections": {
+                "input": {
+                    "id": 9,
+                    "output_name": "Ys1_out"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "YASRA step 2",
+            "outputs": [
+                {
+                    "name": "Ys2_out",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "bottom": 384.21665954589844,
+                "height": 93.19999694824219,
+                "left": 601.933349609375,
+                "right": 801.933349609375,
+                "top": 291.01666259765625,
+                "width": 200,
+                "x": 601.933349609375,
+                "y": 291.01666259765625
+            },
+            "post_job_actions": {},
+            "tool_id": "ys2",
+            "tool_state": "{\"__input_ext\": \"txt\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1",
+            "type": "tool",
+            "uuid": "4522fbc9-4264-45ab-b393-ab6295d31d30",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "Ys2_out",
+                    "uuid": "b44adf3d-fe40-4a54-9338-9db3733b1ace"
+                }
+            ]
+        },
+        "11": {
+            "annotation": "",
+            "content_id": "ys3",
+            "errors": null,
+            "id": 11,
+            "input_connections": {
+                "input": {
+                    "id": 10,
+                    "output_name": "Ys2_out"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "YASRA step 3",
+            "outputs": [
+                {
+                    "name": "Ys3_out",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "bottom": 515.0500030517578,
+                "height": 93.19999694824219,
+                "left": 597.0333251953125,
+                "right": 797.0333251953125,
+                "top": 421.8500061035156,
+                "width": 200,
+                "x": 597.0333251953125,
+                "y": 421.8500061035156
+            },
+            "post_job_actions": {},
+            "tool_id": "ys3",
+            "tool_state": "{\"__input_ext\": \"data\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1",
+            "type": "tool",
+            "uuid": "a4f892c5-17cb-4c69-8519-63b921e6cc8e",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "Ys3_out",
+                    "uuid": "7b125268-0b58-43ee-b0bf-1d678400c4bd"
+                }
+            ]
+        },
+        "12": {
+            "annotation": "",
+            "content_id": "ys4",
+            "errors": null,
+            "id": 12,
+            "input_connections": {
+                "input": {
+                    "id": 11,
+                    "output_name": "Ys3_out"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "YASRA step 4",
+            "outputs": [
+                {
+                    "name": "Ys4_out",
+                    "type": "data"
+                },
+                {
+                    "name": "Ys4_sam",
+                    "type": "sam"
+                },
+                {
+                    "name": "Ys4_ace",
+                    "type": "data"
+                },
+                {
+                    "name": "Ys4_log",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "bottom": 736.2166442871094,
+                "height": 184.39999389648438,
+                "left": 597.2333374023438,
+                "right": 797.2333374023438,
+                "top": 551.816650390625,
+                "width": 200,
+                "x": 597.2333374023438,
+                "y": 551.816650390625
+            },
+            "post_job_actions": {},
+            "tool_id": "ys4",
+            "tool_state": "{\"__input_ext\": \"data\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1",
+            "type": "tool",
+            "uuid": "23fdfade-a5f2-4582-ab6c-e1ebbdbde2a7",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "Ys4_out",
+                    "uuid": "963310f0-9b57-46c9-92b5-0d2f5722c338"
+                },
+                {
+                    "label": null,
+                    "output_name": "Ys4_sam",
+                    "uuid": "07173d24-9755-43a2-990b-b67d978c70c7"
+                },
+                {
+                    "label": null,
+                    "output_name": "Ys4_ace",
+                    "uuid": "2d7f4c43-e972-43ab-b0a7-70fa7167d88a"
+                },
+                {
+                    "label": null,
+                    "output_name": "Ys4_log",
+                    "uuid": "56da3fda-8ea6-45eb-9648-ca3ea8219a47"
+                }
+            ]
+        },
+        "13": {
+            "annotation": "",
+            "content_id": "ecYasra",
+            "errors": null,
+            "id": 13,
+            "input_connections": {
+                "assembly": {
+                    "id": 12,
+                    "output_name": "Ys4_out"
+                },
+                "sam": {
+                    "id": 12,
+                    "output_name": "Ys4_sam"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Extract_contigs_YASRA",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "txt"
+                },
+                {
+                    "name": "output_samfiles",
+                    "type": "zip"
+                },
+                {
+                    "name": "num",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "bottom": 688.6166534423828,
+                "height": 204.8000030517578,
+                "left": 920.3333129882812,
+                "right": 1120.3333129882812,
+                "top": 483.816650390625,
+                "width": 200,
+                "x": 920.3333129882812,
+                "y": 483.816650390625
+            },
+            "post_job_actions": {},
+            "tool_id": "ecYasra",
+            "tool_state": "{\"__input_ext\": \"sam\", \"assembly\": {\"__class__\": \"ConnectedValue\"}, \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"sam\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "f3ecc107-e47b-4a67-b76f-d2f49727a1c8",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "9fc8657d-ed22-49c0-8d91-beee97a3de71"
+                },
+                {
+                    "label": null,
+                    "output_name": "output_samfiles",
+                    "uuid": "9e8efe69-6787-4929-b152-c5dedfdede68"
+                },
+                {
+                    "label": null,
+                    "output_name": "num",
+                    "uuid": "46f606f3-18ee-4478-ac1f-cd67b5188949"
+                }
+            ]
+        },
+        "14": {
+            "annotation": "",
+            "content_id": "Create_yml",
+            "errors": null,
+            "id": 14,
+            "input_connections": {
+                "input": {
+                    "id": 13,
+                    "output_name": "output_samfiles"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Create YAML",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "bottom": 581.0500030517578,
+                "height": 93.19999694824219,
+                "left": 1187.5999755859375,
+                "right": 1387.5999755859375,
+                "top": 487.8500061035156,
+                "width": 200,
+                "x": 1187.5999755859375,
+                "y": 487.8500061035156
+            },
+            "post_job_actions": {},
+            "tool_id": "Create_yml",
+            "tool_state": "{\"__input_ext\": \"zip\", \"chromInfo\": \"/srv/galaxy/server/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "e01c8e7d-1ff2-4949-9a72-0bef87079186",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "71ea3d94-41f2-4def-ac3c-612d178e5404"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "a6725343-dee4-48da-ad3b-4b2a8a5ea0d6",
+    "version": 2
+}
