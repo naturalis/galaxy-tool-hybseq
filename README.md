@@ -8,16 +8,6 @@ In this project we recreated the hybrid sequencing pipeline first described by N
   - Fastx_collapser     1.0.1
   - YASRA               2.33
   - Lastz               1.3.2
-  - SAMtools:
-    - sam_to_bam       2.1.1
-    - sam_pileup       1.1.3
-  - VarScan             2.4.2
-  - BLAT                0.3
-  - MAFFT               7.475
-  - MACSE
-  - Phyutility          2.7.1
-  - Partitionfinder     2.1.1
-  - Phylogeny_converter 1.0.0
-  - RAxML               8.2.4
+
   
     
