@@ -9,5 +9,11 @@ In this project we recreated the hybrid sequencing pipeline first described by N
   - YASRA               2.33
   - Lastz               1.3.2
 
+The workflow also has custom made tools:
+  - YASRA step 1: uses LASTZ to map reads to the reference sequence
+  - YASRA step 2: finds best hits
+  - YASRA step 3: sorts the best hits
+  - YASRA step 4: assembly of the hits
+  - Extract contigs: creates individual contig sam files for each contig
+  - create yaml: creates YAML file which is needed in further steps of the pipeline. 
   
-    
