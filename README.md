@@ -1,7 +1,6 @@
 # galaxy-tool-hybseq
 ## Galaxy server
 This galaxy workflow was created and tested in a local galaxy server. The server was setup by following the tutorial: Galaxy Installation with Ansible (Galaxy Training Materials). https://training.galaxyproject.org/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html (Rasche et al, 2021)
-The galaxy server can be downloaded on Zenodo
 
 To run the server, open the galaxy server directory by using the command:
 ```bash
@@ -35,6 +34,6 @@ The workflow also has custom made tools:
 The tools we created for the pipeline are available in the /src directory. Before the YASRA tools can be used YASRA needs to be installed on the machine and added to the $PATH. We chose to use YASRA instead of Alignreads because we were not able to get the requirements in the XML-files to work. When running Alignreads in Galaxy we kept getting an error which stated that it was unable to create the Conda environment needed. We were not able to find the reason for this. 
 
 ## Galaxy server download
-The appliance for the Galaxy server we used in this project is available for download at Zenodo.org, which can be imported onto a virtualization product like Virtualbox. 
+The appliance for the Galaxy server we used in this project is available for download at https://zenodo.org/record/5524661, which can be imported onto a virtualization product like Virtualbox. 
 The user we used is called 'natgal' with the password 'naturalis'
   
