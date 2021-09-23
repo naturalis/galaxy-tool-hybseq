@@ -1,0 +1,15 @@
+<tool id="Create_yml" name="Create YAML">
+  <description> Create YAML file</description>
+	<command><![CDATA[
+    python '${__tool_directory__}/create_yml.py' '${input.name[9:]}' '$input' '$output' 
+ 	]]></command>
+	<inputs>
+		<param name="input" type="data" format="zip" label="individual sam files"/>
+	</inputs>
+	<outputs>
+  		<data name="output" label="yaml_config_${input.name[9:]}" />
+	</outputs>
+	<help>
+		Create yaml file for the contigs from zipfile
+  </help>
+</tool>

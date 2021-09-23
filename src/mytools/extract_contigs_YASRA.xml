@@ -1,0 +1,18 @@
+<tool id="ecYasra" name="Extract_contigs_YASRA">
+  <description> extract contigs</description>
+	<command><![CDATA[
+    python '${__tool_directory__}/ecYASRA.py' '${sam.name[4:-4]}' '$sam' '$assembly' '$output' '$output_samfiles' '$num'
+ 	]]></command>
+	<inputs>
+		<param name="sam" type="data" label="input sam"/>
+		<param name="assembly" type="data" label="input assembly"/>
+	</inputs>
+	<outputs>
+  		<data name="output" format="txt" label="mapped_contigs_${sam.name[4:-4]}" />
+  		<data name="output_samfiles" format="zip" label="samfiles_${sam.name[4:-4]}" />
+  		<data name="num" format="txt" label="num_reads/contigs_${sam.name[4:-4]}" />
+	</outputs>
+	<help>
+		This tool extracts contigs using YASRA
+  </help>
+</tool>
