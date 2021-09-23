@@ -1,6 +1,6 @@
 # galaxy-tool-hybseq
 ## Galaxy server
-This galaxy workflow was created and tested ion a local galaxy server. The server was setup by following the tutorial: Galaxy Installation with Ansible (Galaxy Training Materials). https://training.galaxyproject.org/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html (Rasche et al, 2021)
+This galaxy workflow was created and tested in a local galaxy server. The server was setup by following the tutorial: Galaxy Installation with Ansible (Galaxy Training Materials). https://training.galaxyproject.org/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html (Rasche et al, 2021)
 The galaxy server can be downloaded on Zenodo
 
 To run the server, open the galaxy server directory by using the command:
